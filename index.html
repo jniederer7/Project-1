@@ -1,23 +1,532 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<html lang="en">
 
-        <script
-        src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
-        
-    </head>
- 
+<head>
+  <meta charset="utf-8">
+  <title>Snack Attack! powered by Nutritionix</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   
-     
+</head>
 
 <body>
-</body>
-</html>
 
+  <!-- Product select Box -->
+  <div class="container">
+    <div class="jumbotron">
+      <form id="search-form">
+    
+        <!-- Label for Text Box -->
+        <label for="product-input">Search Food Database &nbsp;</label>
+    
+        <!-- Text Input Box -->
+        <input type="text" id="product-input"><br>
+    
+        <!-- Submit Button -->
+        <input id="select-product" type="submit" value="Submit" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+  
+
+
+      <!-- Retrieved data will be dumped here -->
+      <div class="container">
+        <div id="data"></div>
+      </div>
+
+      <div class="container">
+        <div id="nutrients"></div>
+      </div>
+
+
+
+    <div class="container center-block"> <!-- container -->
+      
+          <!-- Nutrition Facts label -->
+      
+          <section class="performance-facts">
+            <header class="performance-facts__header">
+              <h1 class="performance-facts__title">Nutrition Facts</h1>
+              <p><span class="foodName"></span>
+              <p>Serving Size<span class="servingSize"></span> 
+              <p><span></span></p>
+            </header>
+            <table class="performance-facts__table">
+              <thead>
+                <tr>
+                  <th colspan="3" class="small-info">
+                    Amount Per Serving
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colspan="2">
+                    <b>Calories</b>
+                    <span class="calories"></span>
+                  </th>
+                  <td>
+                    Calories from Fat <span class="calories_from_fat"></span>
+                  </td>
+                </tr>
+                <tr class="thick-row">
+                  <td colspan="3" class="small-info">
+                    <b>% Daily Value*</b>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Total Fat</b>
+                    <span class="totalFat"></span>
+                  </th>
+                  <td>
+                    <b><span class="totalFatPercentage"></span></b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell">
+                  </td>
+                  <th>
+                    Saturated Fat <span class="sat_fat"></span>
+                  </th>
+                  <td>
+                    <b><span class="sat_fatPercentage"></span></b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell">
+                  </td>
+                  <th>
+                    Trans Fat<span class="trans_fat"></span>
+                  </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Cholesterol</b><span class="cholesterol"></span> 
+                  </th>
+                  <td>
+                    <b><span class="cholesterolPercentage"></span></b>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Sodium</b><span class="sodium"></span>
+                  </th>
+                  <td>
+                    <b><span class="sodiumPercentage"></b>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">
+                    <b>Total Carbohydrate</b>
+                    <span class="carbohydrates"></span>
+                  </th>
+                  <td>
+                    <b><span class="carboPercentage"></span></b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell">
+                  </td>
+                  <th>
+                    Total Fiber<span class="fiber"></span>
+                  </th>
+                  <td>
+                    <b><span class="fiberPercentage"></span></b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="blank-cell">
+                  </td>
+                  <th>
+                    Sugars <span class="sugars"></span> 
+                  </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr class="thick-end">
+                  <th colspan="2">
+                    <b>Protein</b>
+                    <span class="protein"></span>
+                  </th>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <table class="performance-facts__table--grid">
+              <tbody>
+                <tr>
+                  <td colspan="2">
+                    Vitamin A <span class="vitamin_A"></span> 
+                  </td>
+                  <td>
+                    Vitamin C <span class="vitamin_C"></span> 
+                  </td>
+                </tr>
+                <tr class="thin-end">
+                  <td colspan="2">
+                    Calcium <span class="calcium"></span> 
+                  </td>
+                  <td>
+                    Iron <span class="iron"></span> 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+            
+            <table class="performance-facts__table--small small-info">
+              <thead>
+                <tr>
+                  <td colspan="2"></td>
+                  <th>Calories:</th>
+                  <th>2,000</th>
+                  <th>2,500</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colspan="2">Total Fat</th>
+                  <td>Less than</td>
+                  <td>65g</td>
+                  <td>80g</td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th>Saturated Fat</th>
+                  <td>Less than</td>
+                  <td>20g</td>
+                  <td>25g</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Cholesterol</th>
+                  <td>Less than</td>
+                  <td>300mg</td>
+                  <td>300 mg</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Sodium</th>
+                  <td>Less than</td>
+                  <td>2,400mg</td>
+                  <td>2,400mg</td>
+                </tr>
+                <tr>
+                  <th colspan="3">Total Carbohydrate</th>
+                  <td>300g</td>
+                  <td>375g</td>
+                </tr>
+                <tr>
+                  <td class="blank-cell"></td>
+                  <th colspan="2">Dietary Fiber</th>
+                  <td>25g</td>
+                  <td>30g</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <p class="small-info">
+              Calories per gram:
+            </p>
+            <p class="small-info text-center">
+              Fat 9
+              &bull;
+              Carbohydrate 4
+              &bull;
+              Protein 4
+            </p>
+            
+          </section>
+          <!-- END Nutrition Facts label -->
+      
+        </div> <!-- container -->
+    
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+   
+   // This are our API credentials 
+    var x_app_id = "47b34827";
+    var x_app_key = "382d2ac51b6cd7e53d642a6467b86e27";
+    var inputProduct = "";
+
+    // Input form
+    $("#select-product").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    inputProduct = $("#product-input").val().trim();
+
+    // Running the searchBandsInTown function (passing in the artist as an argument)
+    searchProduct(inputProduct);
+  });
+
+
+    // Creates dynamic list of products
+   function searchProduct(){
+    // Here we are building the URL we need to query the database
+    var search = inputProduct;
+    var queryURL = "https://trackapi.nutritionix.com/v2/search/instant?query=" + search + "?";
+
+    // Here we run our AJAX call to Nutritionix API
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        headers: {"x-app-id": x_app_id, "x-app-key": x_app_key, "x-remote-user-id":"0"}
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(responseSearch) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(responseSearch);
+
+        // clear results
+        $("#data").empty();
+
+         for (var i = 0; i < responseSearch.branded.length; i++) {
+               var textDiv = $("<div>");
+               var brandName = responseSearch.branded[i].brand_name;
+               var foodName = responseSearch.branded[i].food_name;
+               var calories = responseSearch.branded[i].nf_calories;
+               var servingQty = responseSearch.branded[i].serving_qty;
+               var servingUnit = responseSearch.branded[i].serving_unit;
+               var photoSrc = responseSearch.branded[i].photo.thumb;
+               var nixItemId = responseSearch.branded[i].nix_item_id;
+
+
+               var p1 = $("<p>").html("Brand name: " + brandName);
+               var p2 = $("<p>").html("Food name: " + foodName);
+               var p4 = $("<p>").html(servingQty + " " + servingUnit);
+               
+               
+               textDiv.attr('data-num', nixItemId);
+               textDiv.addClass("product-item");
+               console.log(textDiv.attr('data-num'));
+
+            
+               textDiv.append(p1); // Brand name
+               textDiv.append(p2); // food name
+              //  textDiv.append(p3); // Calories
+               textDiv.append(p4); // serving size
+               textDiv.append("<hr>")
+               $("#data").prepend(textDiv);
+
+        }
+
+      });
+
+    } // function searchProduct
+
+
+    $(document).on("click", ".product-item", displayReport);
+
+    function displayReport(){
+
+        // This are our API credentials 
+        var x_app_id = "47b34827";
+        var x_app_key = "382d2ac51b6cd7e53d642a6467b86e27";
+        var nutritionalSearch = $(this).data('num');
+
+        // Here we are building the URL we need to query the database
+        var queryURL = "https://trackapi.nutritionix.com/v2/search/item?nix_item_id=" + nutritionalSearch;
+        console.log(queryURL);
+
+          $.ajax({
+            url: queryURL,
+            method: "GET",
+            headers: {"x-app-id": x_app_id, "x-app-key": x_app_key, "x-remote-user-id":"0"}
+          })
+          // We store all of the retrieved data inside of an object called "response"
+          .done(function(response) {
+
+            console.log(response);
+           
+           // Transfer content to HTML
+        // $(".name").html("<h2>" + response.report.food.name + "</h2>");
+        // $(".ndbno").html("<strong>" + "USDA #: " + "</strong>" + response.report.food.ndbno);
+        // $(".manu").html("<strong>" + "Manufacturer: " + "</strong>" + response.report.food.manu);
+        // $(".descr").html("<strong>" + "Description: " + "</strong>" + response.report.food.ing.desc);
+
+
+                 var foodName = response.foods[0].food_name;
+
+                // nutrient Calories
+                  var energy_value  = response.foods[0].nf_calories;
+                  var calories = Math.ceil(energy_value);
+
+
+               // serving size 
+                  var serving_unit  = response.foods[0].serving_qty;
+                  var servingSize = " " + serving_unit;
+             
+
+              //  nutrient protein
+              if (response.foods[0].nf_protein === null){
+                    var protein_value = 0; 
+                  } else {
+                    var protein_value = response.foods[0].nf_protein;
+                  };
+                  var protein = parseInt(protein_value).toFixed(1);
+
+                 // total fat
+                 if (response.foods[0].nf_total_fat === null){
+                    var totalFat_value = 0; 
+                  } else {
+                    var totalFat_value = response.foods[0].nf_total_fat;
+                  };
+                  var totalFat = parseInt(totalFat_value).toFixed(1);
+
+                 // saturated fat
+                 if (response.foods[0].nf_saturated_fat === null){
+                    var sat_fat_value = 0; 
+                  } else {
+                    var sat_fat_value = response.foods[0].nf_saturated_fat;
+                  };
+                  var sat_fat = parseInt(sat_fat_value).toFixed(1);
+
+                 // carbohydrate
+                  if (response.foods[0].nf_total_carbohydrate === null){
+                    var carbohydrate_value = 0; 
+                  } else {
+                    var carbohydrate_value = response.foods[0].nf_total_carbohydrate;
+                  };
+                 var carbohydrate = parseInt(carbohydrate_value).toFixed(1);
+
+                 // fiber
+                 if (response.foods[0].nf_dietary_fiber === null){
+                    var fiber_value = 0; 
+                  } else {
+                    var fiber_value = response.foods[0].nf_dietary_fiber;
+                  };
+                  var fiber = parseInt(fiber_value).toFixed(1);
+
+                 // sodium
+                 if (response.foods[0].nf_sodium === null){
+                    var sodium_value = 0; 
+                  } else {
+                    var sodium_value = response.foods[0].nf_sodium;
+                  };
+                  var sodium = parseInt(sodium_value).toFixed(1);
+                  
+
+                  // cholesterol
+                  if (response.foods[0].nf_cholesterol === null){
+                    var cholesterol_value = 0; 
+                  } else {
+                    var cholesterol_value = response.foods[0].nf_cholesterol;
+                  };
+
+                 // sugars
+                 if (response.foods[0].nf_sugars === null){
+                    var sugars_value = 0;
+                  } else {
+                    var sugars_value = response.foods[0].nf_sugars;
+                  };
+
+                 var sugars = parseInt(sugars_value).toFixed(1);
+
+                  // Check for extra nutrients
+                 var nutrientsArray = response.foods[0].full_nutrients;
+                 for (var i = 0; i < nutrientsArray.length; i++){
+                    
+                    if (nutrientsArray[i].attr_id === 606){ 
+                    var trans_Fat = nutrientsArray[i].value;    
+                    } else {
+                    var trans_Fat = 0;
+                    };
+
+                    if (nutrientsArray[i].attr_id === 320){ 
+                    var vitamin_A = nutrientsArray[i].value;    
+                    } else {
+                    var vitamin_A = 0;
+                    };
+
+                    if (nutrientsArray[i].attr_id === 401){ 
+                    var vitamin_C = nutrientsArray[i].value;    
+                    } else {
+                    var vitamin_C = 0;
+                    };
+
+                    if (nutrientsArray[i].attr_id === 301){ 
+                    var calcium_value = nutrientsArray[i].value;    
+                    } else {
+                    var calcium_value = 0;
+                    };
+
+                    if (nutrientsArray[i].attr_id === 303){ 
+                    var iron_value = nutrientsArray[i].value;    
+                    } else {
+                    var iron_value = 0;
+                    };
+
+                  };        
+
+                  var transFat = parseInt(trans_Fat).toFixed(1);
+                  var vitaminA = parseInt(vitamin_A).toFixed(1);
+                  var vitaminC = parseInt(vitamin_C).toFixed(1);
+                  var calcium = parseInt(calcium_value).toFixed(1);
+                  var iron = parseInt(iron_value).toFixed(1);
+              
+
+
+
+
+
+        //        // iron
+        //        var iron_value = response.report.food.nutrients[7].measures[0].value;
+        //        var iron = parseInt(iron_value).toFixed(1);
+
+               // calories from fat
+               var calories_from_fat = totalFat * 9;
+
+
+               // nutrients
+               
+
+
+            
+
+        //     // Transfer content to Nutritions Fact Label
+               $(".foodName").html(foodName);
+               $(".calories").html(calories);
+               $(".calories_from_fat").html(calories_from_fat);
+               $(".protein").html(protein + "g");
+               $(".servingSize").html(servingSize);
+               $(".totalFat").html(totalFat + "g");
+               $(".totalFatPercentage").html(Math.ceil(parseInt(totalFat_value)/0.65) + "%");
+               $(".sat_fat").html(" " + sat_fat + "g");
+               $(".sat_fatPercentage").html(Math.ceil(parseInt(sat_fat)*5) + "%");
+               $(".cholesterol").html(" " + cholesterol_value + "mg");
+               $(".cholesterolPercentage").html(Math.ceil(parseInt(cholesterol_value)/3) + "%");
+               $(".sodium").html(" " + sodium + "mg");
+               $(".sodiumPercentage").html(Math.ceil(parseInt(sodium_value)/24) + "%");
+               $(".carbohydrates").html(carbohydrate + "g");
+               $(".carboPercentage").html(Math.ceil(parseInt(carbohydrate_value)/3) + "%");
+               $(".fiber").html(" " + fiber + "g");
+               $(".fiberPercentage").html(Math.ceil(parseInt(fiber_value)/0.25) + "%");
+               $(".sugars").html(" " + sugars + "g");
+               $(".trans_fat").html(" " + transFat + "g");
+               $(".vitamin_A").html(Math.ceil(parseInt(vitaminA)/50) + "%");
+               $(".vitamin_C").html(Math.ceil(parseInt(vitaminC)/0.6) + "%");
+               $(".calcium").html(Math.ceil(parseInt(calcium)/10) + "%");
+               $(".iron").html(Math.ceil(parseInt(iron)/0.18) + "%");
+       
+              }); // ajax
+            }
+
+  </script>
+</body>
+
+</html>
