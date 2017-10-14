@@ -40,7 +40,7 @@
         // clear results
         $("#data").empty();
 
-         for (var i = 0; i < responseSearch.branded.length; i++) {
+         for (var i = 0; i < 9; i++) {
                var textDiv = $("<div>");
                var brandName = responseSearch.branded[i].brand_name;
                var foodName = responseSearch.branded[i].food_name;
@@ -103,7 +103,18 @@
                   var energy_value  = response.foods[0].nf_calories;
                   var calories = Math.ceil(energy_value);
 
-               // serving size 
+                // Excercise calculations
+                  var runningCal = (calories/335);
+                  var runningTime = (runningCal*30);
+
+                  var swimmingCal = (calories/372);
+                  var swimmingTime = (swimmingCal*30);
+
+                  var cyclingCal = (calories/298);
+                  var cyclingTime = (cyclingCal*30);
+
+
+                // serving size 
                   var nf_servingQty  = response.foods[0].serving_qty;
                   var nf_servingUnit = response.foods[0].serving_unit;
                   var servingSize = " " + nf_servingQty + " " + nf_servingUnit;
@@ -243,6 +254,11 @@
                $(".vitamin_C").html(Math.ceil(parseInt(vitaminC)/0.6) + "%");
                $(".calcium").html(Math.ceil(parseInt(calcium)/10) + "%");
                $(".iron").html(Math.ceil(parseInt(iron)/0.18) + "%");
+
+               //Transfer content to Excercise panel
+               $("#running").html("Running " + (Math.ceil(runningTime)) + " Minutes at 5.2 mph");
+               $("#swimming").html("Swimming vigurous laps for " + (Math.ceil(swimmingTime)) + " Minutes");
+               $("#cycling").html("Cycling " + (Math.ceil(cyclingTime)) + " Minutes at 13 mph");
        
               }); // ajax
             }

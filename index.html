@@ -10,6 +10,7 @@
     <title>Snack Attack! powered by Nutritionix</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/21a1c2f916.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     
 </head>
@@ -37,14 +38,39 @@
   </div>
   
 
-      <!-- Retrieved data will be dumped here -->
-      <div class="container">
+ <!-- Retrieved data will be dumped here -->
+ <!-- Table begins here -->
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12" id="displayTrains">
+            <div class="panel panel-info">
+                <div class="panel-heading"><h3 class="panel-title"><strong>List of Products</strong>
+                </h3> 
+                  </div>
+                 <div class="panel-body">
+                    <div id="data"></div>
+               
+                  <tbody></tbody>
+
+                </table>    
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</div>
+ <!-- Table -->
+
+
+
+      <!-- <div class="container">
         <div id="data"></div>
       </div>
 
       <div class="container">
         <div id="nutrients"></div>
-      </div>
+      </div> -->
 
      <!-- Nutrition Facts label -->
     <div class="container center-block">
@@ -247,8 +273,26 @@
             
           </section>
           <!-- END Nutrition Facts label -->
+
+              <!-- Snack Attack Exercise recommendations -->
+              <div class="row">
+                  <div class="list-group col-sm-9">
+                    <ul>
+                    <li  class="list-group-item active">
+                      How long you need to exercise to burn these calories!
+                    </li>
+                    <li class="list-group-item" id="running"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Running</li>
+                    <li class="list-group-item" id="swimming"><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp;Swimming Laps</li>
+                    <li class="list-group-item" id="cycling"><i class="fa fa-bicycle" aria-hidden="true"></i>&nbsp;Cycling</li>
+                    </ul>
+                  </div>
+            </div>
       
         </div> <!-- container -->
+
+      
+        
+ 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
