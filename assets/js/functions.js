@@ -81,10 +81,10 @@ jQuery(window).on('scroll', function (){
 
 
   /*-------------------  Counter -----------------*/
-  $('.counter').counterUp({
-    delay: 10,
-    time: 1000
-  });
+  // $('.counter').counterUp({
+  //   delay: 10,
+  //   time: 1000
+  // });
 
 
   /*-----------  Boxer Video and image Gallery  --------*/
