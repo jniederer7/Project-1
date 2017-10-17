@@ -8,13 +8,12 @@
     $("#select-product").on("click", function(event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
-    // Storing the artist name
+    // Storing the product name
     inputProduct = $("#product-input").val().trim();
 
-    // Running the searchBandsInTown function (passing in the artist as an argument)
+    // (passing in the product as an argument)
     searchProduct(inputProduct);
   });
-
 
     // Creates dynamic list of products
    function searchProduct(){
@@ -40,7 +39,7 @@
         // clear results
         $("#data").empty();
 
-         for (var i = 0; i < 9; i++) {
+         for (var i = 0; i < 20; i++) {
                var textDiv = $("<div>");
                var brandName = responseSearch.branded[i].brand_name;
                var foodName = responseSearch.branded[i].food_name;
@@ -50,22 +49,19 @@
                var photoSrc = responseSearch.branded[i].photo.thumb;
                var nixItemId = responseSearch.branded[i].nix_item_id;
 
-
-               var p1 = $("<p>").html("Brand name: " + brandName);
-               var p2 = $("<p>").html("Food name: " + foodName);
-               var p4 = $("<p>").html(servingQty + " " + servingUnit);
-               
-               
+               var p1 = $("<span>").html(brandName);
+               var p2 = $("<span>").html("'s " + foodName);
+               var p4 = $("<span>").html(", " + servingQty + " " + servingUnit);
+                
                textDiv.attr('data-num', nixItemId);
                textDiv.addClass("product-item");
                console.log(textDiv.attr('data-num'));
-
             
                textDiv.append(p1); // Brand name
                textDiv.append(p2); // food name
               //  textDiv.append(p3); // Calories
                textDiv.append(p4); // serving size
-               textDiv.append("<hr>")
+               textDiv.append("<br>")
                $("#data").prepend(textDiv);
 
         }
@@ -73,7 +69,6 @@
       });
 
     } // function searchProduct
-
 
     $(document).on("click", ".product-item", displayReport);
 
@@ -225,11 +220,9 @@
                   var calcium = parseInt(calcium_value).toFixed(1);
                   var iron = parseInt(iron_value).toFixed(1);
               
-
                // calories from fat
                var calories_from_fat = totalFat * 9;
 
-               // nutrients
               // Transfer content to Nutritions Fact Label
                $(".foodName").html(foodName);
                $(".calories").html(calories);
@@ -256,9 +249,9 @@
                $(".iron").html(Math.ceil(parseInt(iron)/0.18) + "%");
 
                //Transfer content to Excercise panel
-               $("#running").html("Running " + (Math.ceil(runningTime)) + " Minutes at 5.2 mph");
-               $("#swimming").html("Swimming vigurous laps for " + (Math.ceil(swimmingTime)) + " Minutes");
-               $("#cycling").html("Cycling " + (Math.ceil(cyclingTime)) + " Minutes at 13 mph");
+               $("#running").html("<img src='assets/images/run.png' class='excercise-icon'> Running " + (Math.ceil(runningTime)) + " Minutes at 5.2 mph");
+               $("#swimming").html("<img src='assets/images/swim.png' class='excercise-icon'> Swimming vigurous laps for " + (Math.ceil(swimmingTime)) + " Minutes");
+               $("#cycling").html("<img src='assets/images/bike.png' class='excercise-icon'> Cycling " + (Math.ceil(cyclingTime)) + " Minutes at 13 mph");
        
               }); // ajax
             }

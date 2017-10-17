@@ -1,13 +1,4 @@
 # Project-1
-Project #1
-
-
-API keys:
-===========================================
-# 17266246 Nutrition Analysis
-# 8bd1b437 Recipe search
-
-
-# Nutritionix API KEY
-47b34827
+Snack Attack
+by Nick Williams, Justin Niederer & Julian Hasse
 
