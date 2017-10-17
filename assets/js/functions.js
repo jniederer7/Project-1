@@ -88,7 +88,7 @@ jQuery(window).on('scroll', function (){
 
 
   /*-----------  Boxer Video and image Gallery  --------*/
-      $(".boxer").boxer(); 
+      // $(".boxer").boxer(); 
 
 
 
